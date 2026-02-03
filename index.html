@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Digitalización en Ecuador</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="imagenes/img1.png">
+
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(180deg,#e3f2fd,#ffffff);
+  color:#333;
+}
+
+header{
+  text-align:center;
+  padding:40px 20px;
+}
+
+header h1{
+  color:#1565c0;
+  font-size:2.3em;
+}
+
+header p{
+  color:#555;
+}
+
+.timeline{
+  position:relative;
+  max-width:1100px;
+  margin:auto;
+  padding:20px 0;
+}
+
+.timeline::after{
+  content:'';
+  position:absolute;
+  width:4px;
+  background:#1565c0;
+  top:0;
+  bottom:0;
+  left:50%;
+}
+
+.container{
+  padding:20px 40px;
+  position:relative;
+  width:50%;
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s;
+}
+
+.container.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.left{ left:0; }
+.right{ left:50%; }
+
+.content{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.year{
+  font-weight:600;
+  color:#0d47a1;
+  margin-bottom:10px;
+}
+
+.content ul{
+  padding-left:18px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#666;
+}
+
+/* Responsive */
+@media screen and (max-width:768px){
+  .timeline::after{ left:30px; }
+  .container{
+    width:100%;
+    padding-left:70px;
+    padding-right:20px;
+  }
+  .right{ left:0; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1><strong>Digitalización en Ecuador</strong></h1>
+<h2>Línea de Tiempo</h2>
+</header>
+
+<div class="timeline">
+
+<!-- 1991-1994 -->
+<div class="container left"><div class="content">
+<div class="year">🌐 1991 – 1994 | Inicios de Internet</div>
+<b>Acontecimientos</b>
+<ul>
+<li>1991: Ecuanex</li>
+<li>1992: Ecuanet</li>
+<li>1993: Correo electrónico</li>
+<li>1994: Diario Hoy digital</li>
+</ul>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Expansión global de Internet</li>
+<li>Necesidad académica y empresarial</li>
+<li>Innovación en medios</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Cultura digital inicial</li>
+<li>Inicio del periodismo digital</li>
+<li>Nuevas formas de comunicación</li>
+</ul>
+</div></div>
+
+<!-- 2000 -->
+<div class="container right"><div class="content">
+<div class="year">💻 Años 2000 | Expansión del Internet</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Reducción de costos tecnológicos</li>
+<li>Crecimiento de computadoras personales</li>
+<li>Globalización comercial</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Acceso masivo a información</li>
+<li>Migración de medios tradicionales</li>
+<li>Comercio electrónico informal</li>
+</ul>
+</div></div>
+
+<!-- 2002 -->
+<div class="container left"><div class="content">
+<div class="year">📜 2002 | Ley de Comercio Electrónico</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Validez legal de contratos digitales</li>
+<li>Intercambio electrónico creciente</li>
+<li>Estándares internacionales</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Seguridad jurídica</li>
+<li>Inicio formal del e-commerce</li>
+<li>Base legal digital</li>
+</ul>
+</div></div>
+
+<!-- 2007-2010 -->
+<div class="container right"><div class="content">
+<div class="year">📡 2007 – 2010 | Conectividad</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Brecha digital urbano-rural</li>
+<li>Inclusión tecnológica</li>
+<li>Modernización regional</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Internet del 3% al 24%</li>
+<li>Inclusión rural</li>
+<li>Uso educativo</li>
+</ul>
+</div></div>
+
+<!-- 2008 -->
+<div class="container left"><div class="content">
+<div class="year">🔒 2008 | Constitución – Datos</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Preocupación por privacidad</li>
+<li>Bases de datos crecientes</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Derecho a privacidad digital</li>
+<li>Base para LOPDP</li>
+<li>Responsabilidad estatal</li>
+</ul>
+</div></div>
+
+<!-- 2010 Datos Públicos -->
+<div class="container right"><div class="content">
+<div class="year">📂 2010 | Registro de Datos Públicos</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Ordenar información estatal</li>
+<li>Evitar corrupción</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Control de información</li>
+<li>Interoperabilidad inicial</li>
+<li>Acceso ciudadano</li>
+</ul>
+</div></div>
+
+<!-- 2014 -->
+<div class="container left"><div class="content">
+<div class="year">🏛️ 2014 | Gobierno Electrónico</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Saturación de trámites físicos</li>
+<li>Eficiencia administrativa</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Trámites en línea</li>
+<li>Reducción de tiempos</li>
+<li>Transparencia</li>
+</ul>
+</div></div>
+
+<!-- 2015 -->
+<div class="container right"><div class="content">
+<div class="year">📶 2015 | Telecomunicaciones</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Modernizar infraestructura</li>
+<li>Crecimiento móvil</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Banda ancha</li>
+<li>Regulación operadoras</li>
+<li>Mejor cobertura</li>
+</ul>
+</div></div>
+
+<!-- 2016 -->
+<div class="container left"><div class="content">
+<div class="year">🪪 2016 | Identidad Digital</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Trámites online</li>
+<li>Validar identidad</li>
+<li>Archivos físicos acumulados</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Identidad digital oficial</li>
+<li>Menos papel</li>
+<li>Mejor custodia documental</li>
+</ul>
+</div></div>
+
+<!-- 2018 -->
+<div class="container right"><div class="content">
+<div class="year">⚙️ 2018 | Optimización de Trámites</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Burocracia excesiva</li>
+<li>Documentos repetidos</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Interoperabilidad</li>
+<li>Menos corrupción</li>
+<li>Gobierno digital fuerte</li>
+</ul>
+</div></div>
+
+<!-- 2019 -->
+<div class="container left"><div class="content">
+<div class="year">🚀 2019 | Ecuador Digital</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Estrategia nacional</li>
+<li>Crecimiento economía digital</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Innovación tecnológica</li>
+<li>Alfabetización digital</li>
+<li>Menor brecha</li>
+</ul>
+</div></div>
+
+<!-- 2021 Datos -->
+<div class="container right"><div class="content">
+<div class="year">🔐 2021 | Protección de Datos</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Redes sociales masivas</li>
+<li>Riesgos de filtración</li>
+<li>Estándares GDPR</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Sanciones económicas</li>
+<li>Conciencia de privacidad</li>
+<li>Regulación estricta</li>
+</ul>
+</div></div>
+
+<!-- 2021-2022 -->
+<div class="container left"><div class="content">
+<div class="year">📱 2021 – 2022 | Agenda Digital y 4G</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Mayor velocidad</li>
+<li>Educación virtual</li>
+<li>Teletrabajo</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Fibra óptica</li>
+<li>Mejora móvil</li>
+<li>Plataformas digitales</li>
+</ul>
+</div></div>
+
+<!-- 2022-2025 -->
+<div class="container right"><div class="content">
+<div class="year">🧠 2022 – 2025 | Transformación Digital</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Modernización estatal</li>
+<li>Competencia regional</li>
+<li>IA y nube</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Talento digital</li>
+<li>Ciberseguridad</li>
+<li>Servicios públicos digitales</li>
+</ul>
+</div></div>
+
+<!-- 2023 -->
+<div class="container left"><div class="content">
+<div class="year">📈 2023 | Ley Transformación Digital</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Consolidar marco legal</li>
+<li>Inversión tecnológica</li>
+<li>Industria audiovisual</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Incentivos tributarios</li>
+<li>Uso obligatorio de tecnología</li>
+<li>Inversión en nube</li>
+</ul>
+</div></div>
+
+<!-- 2024 -->
+<div class="container right"><div class="content">
+<div class="year">🩺 2024 | Regulaciones Especializadas</div>
+<b>¿Por qué surgió?</b>
+<ul>
+<li>Propiedad intelectual digital</li>
+<li>Digitalización salud</li>
+</ul>
+<b>Repercusiones</b>
+<ul>
+<li>Seguridad jurídica creadores</li>
+<li>Historias clínicas digitales</li>
+</ul>
+</div></div>
+
+<!-- 2025 -->
+<div class="container left"><div class="content">
+<div class="year">🤖 2025 | Política 2025–2030</div>
+<b>¿Por qué surge?</b>
+<ul>
+<li>Planificación a largo plazo</li>
+<li>IA, blockchain, big data</li>
+</ul>
+<b>Repercusiones esperadas</b>
+<ul>
+<li>Digitalización casi total</li>
+<li>Competitividad económica</li>
+<li>Sociedad digital madura</li>
+</ul>
+</div></div>
+
+</div>
+
+<footer>
+Proyecto Académico – Digitalización del Ecuador
+</footer>
+
+<script>
+const items=document.querySelectorAll('.container');
+window.addEventListener('scroll',()=>{
+items.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
+</script>
+
+</body>
+</html>
