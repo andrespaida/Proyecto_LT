@@ -9,14 +9,20 @@ const conocimiento = fs.readFileSync("info.txt", "utf-8");
 dotenv.config();
 
 const app = express();
+
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "https://proyecto-lt.vercel.app");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   next();
 });
-app.use(cors());
+
+app.options("*", (req, res) => {
+  res.sendStatus(200);
+});
+
 app.use(express.json());
+
 
 const client = new OpenAI({
   apiKey: process.env.OPENROUTER_KEY,
