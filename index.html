@@ -101,6 +101,95 @@ footer{
   }
   .right{ left:0; }
 }
+
+/* Botón flotante */
+#chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4da6ff;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Ventana chat */
+#chat-container {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  background: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Arial;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#chat-header {
+  background: #4da6ff;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#chat-box {
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.message {
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.user {
+  background: #cce5ff;
+  align-self: flex-end;
+}
+
+.bot {
+  background: #e2e2e2;
+  align-self: flex-start;
+}
+
+#chat-input {
+  display: flex;
+}
+
+#chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+}
+
+#chat-input button {
+  padding: 10px;
+  border: none;
+  background: #4da6ff;
+  color: white;
+}
+
+
 </style>
 </head>
 
@@ -416,6 +505,91 @@ el.classList.add('show');
 });
 });
 </script>
+
+<!-- Botón flotante -->
+<div id="chat-toggle" onclick="toggleChat()">💬</div>
+
+<!-- Ventana del chat -->
+<div id="chat-container" class="hidden">
+  <div id="chat-header">
+    Asistente
+    <span onclick="toggleChat()" style="cursor:pointer;">✖</span>
+  </div>
+
+  <div id="chat-box"></div>
+
+  <div id="chat-input">
+    <input type="text" id="user-input" placeholder="Escribe un mensaje..." />
+    <button onclick="enviarMensaje()">Enviar</button>
+  </div>
+</div>
+
+
+<script>
+function toggleChat() {
+  const chat = document.getElementById("chat-container");
+  chat.classList.toggle("hidden");
+}
+document.getElementById("user-input")
+  .addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+      enviarMensaje();
+    }
+  });
+</script>
+
+
+<script>
+async function enviarMensaje() {
+  const input = document.getElementById("user-input");
+  const texto = input.value.trim();
+  if (!texto) return;
+
+  agregarMensaje(texto, "user");
+  input.value = "";
+
+  // Mostrar "Escribiendo..."
+  const escribiendoId = mostrarEscribiendo();
+
+  const res = await fetch("http://localhost:3000/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ mensaje: texto })
+  });
+
+  const data = await res.json();
+
+  quitarEscribiendo(escribiendoId);
+  agregarMensaje(data.respuesta, "bot");
+}
+
+function agregarMensaje(texto, tipo) {
+  const chatBox = document.getElementById("chat-box");
+  const div = document.createElement("div");
+  div.className = `message ${tipo}`;
+  div.textContent = texto;
+  chatBox.appendChild(div);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function mostrarEscribiendo() {
+  const chatBox = document.getElementById("chat-box");
+  const div = document.createElement("div");
+  div.className = "message bot";
+  div.id = "escribiendo";
+  div.textContent = "Escribiendo...";
+  chatBox.appendChild(div);
+  chatBox.scrollTop = chatBox.scrollHeight;
+  return "escribiendo";
+}
+
+function quitarEscribiendo(id) {
+  const elem = document.getElementById(id);
+  if (elem) elem.remove();
+}
+</script>
+
+
 
 </body>
 </html>
