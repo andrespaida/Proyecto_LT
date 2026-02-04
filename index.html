@@ -551,7 +551,7 @@ async function enviarMensaje() {
   // Mostrar "Escribiendo..."
   const escribiendoId = mostrarEscribiendo();
 
-  const res = await fetch("http://localhost:3000/chat", {
+  const res = await fetch("https://legislacion-chatbot.onrender.com/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ mensaje: texto })
