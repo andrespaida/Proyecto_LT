@@ -4,31 +4,29 @@ import dotenv from "dotenv";
 import OpenAI from "openai";
 import fs from "fs";
 
-const conocimiento = fs.readFileSync("info.txt", "utf-8");
-
 dotenv.config();
 
 const app = express();
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://proyecto-lt.vercel.app");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  next();
-});
+// Leer archivo de conocimiento
+const conocimiento = fs.readFileSync("info.txt", "utf-8");
 
-app.options("*", (req, res) => {
-  res.sendStatus(200);
-});
+// CORS BIEN CONFIGURADO
+app.use(cors({
+  origin: "https://proyecto-lt.vercel.app",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}));
 
 app.use(express.json());
 
-
+// Cliente OpenRouter
 const client = new OpenAI({
   apiKey: process.env.OPENROUTER_KEY,
   baseURL: "https://openrouter.ai/api/v1"
 });
 
+// Ruta chat
 app.post("/chat", async (req, res) => {
   try {
     const { mensaje } = req.body;
@@ -46,7 +44,6 @@ INSTRUCCIONES OBLIGATORIAS:
 - NO inventes datos.
 - Si la pregunta no está en la información, responde: "No tengo información sobre eso."
 - No respondas temas fuera del documento.
-- Si no está en el documento, responde que no tienes información.
 
 INFORMACIÓN DISPONIBLE:
 ${conocimiento}
@@ -57,8 +54,6 @@ ${conocimiento}
           content: mensaje
         }
       ]
-
-
     });
 
     res.json({
@@ -66,11 +61,14 @@ ${conocimiento}
     });
 
   } catch (error) {
-    console.error(error);
+    console.error("ERROR IA:", error);
     res.status(500).json({ error: "Error en IA" });
   }
 });
 
-app.listen(3000, () => {
-  console.log("Servidor corriendo en http://localhost:3000");
+// Puerto dinámico para Render
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en puerto ${PORT}`);
 });
