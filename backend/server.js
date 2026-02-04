@@ -4,36 +4,42 @@ import dotenv from "dotenv";
 import OpenAI from "openai";
 import fs from "fs";
 
-console.log("SERVIDOR VERSION NUEVA 1.0");
+console.log("SERVIDOR VERSION NUEVA 1.1");
 
 dotenv.config();
 
 const app = express();
 
-// Leer archivo de conocimiento
-const conocimiento = fs.readFileSync("info.txt", "utf-8");
+let conocimiento = "";
+try {
+  conocimiento = fs.readFileSync("info.txt", "utf-8");
+} catch {
+  console.log("info.txt no encontrado");
+}
 
-// CORS BIEN CONFIGURADO
 app.use(cors({
   origin: "https://proyecto-lt.vercel.app",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"]
 }));
 
+app.options("*", cors());
+
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Backend activo 🚀");
+});
 
 app.get("/test", (req, res) => {
   res.send("Backend funcionando OK");
 });
 
-
-// Cliente OpenRouter
 const client = new OpenAI({
   apiKey: process.env.OPENROUTER_KEY,
   baseURL: "https://openrouter.ai/api/v1"
 });
 
-// Ruta chat
 app.post("/chat", async (req, res) => {
   try {
     const { mensaje } = req.body;
@@ -63,9 +69,7 @@ ${conocimiento}
       ]
     });
 
-    res.json({
-      respuesta: completion.choices[0].message.content
-    });
+    res.json({ respuesta: completion.choices[0].message.content });
 
   } catch (error) {
     console.error("ERROR IA:", error);
@@ -73,7 +77,6 @@ ${conocimiento}
   }
 });
 
-// Puerto dinámico para Render
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
