@@ -214,6 +214,43 @@ footer{
   font-weight:600;
   cursor:pointer;
 }
+
+.container::before{
+  content:'';
+  position:absolute;
+  top:28px;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:white;
+  border:3px solid #2563eb;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  z-index:2;
+}
+
+.left::before{
+  right:-11px;
+}
+
+.right::before{
+  left:-11px;
+}
+
+.content{
+  background:white;
+  padding:22px;
+  border-radius:18px;
+  border:1px solid #e5e7eb;
+  box-shadow:0 3px 8px rgba(0,0,0,0.05);
+  transition:all 0.25s ease;
+}
+
+.content:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 20px rgba(0,0,0,0.08);
+  border-color:#bfdbfe;
+}
+
 </style>
 </head>
 
